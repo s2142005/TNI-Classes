@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Users List</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" media="screen" href="/stylesheets/main.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+    <script src="/javascripts/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+<h4>Users List</h4>
+<ul th:each="hello : ${list}">
+    <li>
+        <span th:text="${hello.name}">AAA</span>
+        <a href="#" th:href="'/update/' + ${hello.id} + '?form'" th:text="Edit">Edit</a>
+        <a href="#" th:href="'/delete/' + ${hello.id}" th:onclick="'return confirm(\'Do you want to delete this user?\')'" th:text="Delete">Delete</a>
+    </li>
+</ul>
+
+<p><a href="/create?form">Create new user</a></p>
+</body>
+</html>
+

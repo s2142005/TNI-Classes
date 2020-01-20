@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>INDIVILISTER : project0001</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="/css/custom.css" charset="utf-8">
+</head>
+<body>
+<main>
+    <!-- START Navigation bar -->
+    <nav th:include="common/nav :: nav"></nav>
+    <!-- END Navigation bar -->
+
+    <!-- START Header -->
+    <div class="header-custom">
+        <div class="container">
+            <h2>project0001</h2>
+            <p></p>
+        </div>
+    </div>
+    <!-- END Header -->
+	<!-- START Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box effect1">
+                    <h4 th:text="'All tasks of ' + ${project.name}">All tasks of xxxx</h4>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <tbody>
+                            <tr th:each="task, stat : ${project.taskList}">
+                                <td class="col-lg-2" style="text-align: right">
+                                    <input type="checkbox" class="task-status" th:data="${task.id}" th:checked="${task.status}? 'true' : 'false'">
+                                </td>
+                                <td class="col-lg-8" th:text="${task.name}">task001</td>
+                                <td class="col-lg-2">
+                                    <a th:href="'/task/delete/' + ${project.id} + '/' + ${task.id}" onclick="return confirm('Delete this task?');">Delete</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box effect1">
+                    <h4 th:text="'Add a new task for ' + ${project.name}">Add a new task for project0001</h4>
+                    <form th:action="@{/task/create}" th:object="${taskForm}" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" class="form-horizontal">
+                        <input type="hidden" name="authenticityToken" value="e739540dfb2b4389d499e26e8b6dc17f665de703">
+                        <input type="text" id="project-id" th:field="*{projectId}" type="hidden">
+                        <div class="form-group">
+                            <label for="newTask" class="col-lg-2 control-label">New task:</label>
+                            <div class="col-lg-10">
+                                <input class="form-control" th:field="*{name}" id="newTask" type="text" name="newTask">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn btn-success">Create a new task</button>
+                                <button type="reset" class="btn btn-danger">Reset</button>
+                                <a href="/project/" class="btn btn-primary">Back to Home</a>
+                            </div>
+                        </div>
+                    </form>
+                               </div>
+            </div>
+        </div>
+    </div>
+    <!-- END Content -->
+    <div class="push"></div>
+</main>
+
+<!-- START Footer -->
+<span th:include="common/footer :: footer"></span>
+<!-- START Footer -->
+
+<script type="text/javascript" language="javascript" charset="_charset" src="/js/jquery-1.12.2.min.js"></script>
+<script type="text/javascript" language="javascript" charset="_charset" src="/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.task-status').on('click',function(){
+            var status = $(this).prop('checked');
+            window.location.href = '/task/edit/' + $(this).attr('data') + '/' + status
+        });
+    });
+</script>
+</body>
+</html>
+                
+        
+    

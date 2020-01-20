@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>footer</title>
+</head>
+<body>
+
+	<footer th:fragment="footer" class="footer">
+	<!-- layout _footer.html replaced into main.html -->
+	  		<div class="row">
+	      	<div class="col-xs-6">
+	          <small>
+	              Powered by <a href="http://arms-asia.com/en/">ARMS Thailand</a>
+	          </small>
+	      	</div>
+	      	<div class="col-xs-6 text-right">
+	          <nav>
+	              <ul class="footer-menu">
+	                  <li><a th:href="@{/about}">About</a></li>
+	                  <li><a th:href="@{/contact}">Contact</a></li>
+	                  <li><a href="http://arms-asia.com/en/">News</a></li>
+	              </ul>
+	          </nav>
+	      </div>
+	  	</div>
+	  	<!-- layout _footer.html replaced into main.html END -->
+	</footer>
+
+</body>
+</html>
+	      	

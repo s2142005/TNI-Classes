@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit User</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" media="screen" href="/stylesheets/main.css">
+    <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+    <script src="/javascripts/jquery-1.5.2.min.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+    <h4>Edit User</h4>
+    <form action="/update" method="POST" accept-charset="utf-8" enctype="application/x-www-form-urlencoded" class="form-horizontal" >
+        <input type="text" name="id" th:value="${hello.id}" hidden/>
+        <div>
+            <label for="name">Name :</label>
+            <p>
+                <input id="name" type="text" name="name" th:value="${hello.name}"/>
+            </p>
+        </div>
+        <button type="submit" id="ok">Update</button>
+        <button type="reset" id="reset">Reset</button>
+        <p>
+            <a href="/" id="back" >Back to Home</a>
+        </p>
+    </form>
+</body>
+</html>
+

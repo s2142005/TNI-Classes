@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/main"
+>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+	<!-- StaticPages home.html inserted into main.html -->
+	<div th:if="${isLogin}" class="row">
+		You have logged in
+	</div>
+	<div th:unless="${isLogin}" class="center jumbotron">
+		<h1>Welcome to Emitter Application</h1>
+		<h2>
+			<a href="http://arms-asia.com/en/">ARMS Thailand</a> presents, How to
+			create SNS Application.
+		</h2>
+		<a href="/user/signUp" class="btn btn-lg btn-primary"> <span
+			class="glyphicon glyphicon-user" aria-hidden="true"></span> Sign up
+			now!
+		</a>
+	</div>
+	<!-- StaticPages home.html inserted into main.html End -->
+	</div>
+</body>
+</html>

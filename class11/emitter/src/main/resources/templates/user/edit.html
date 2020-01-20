@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/main"
+>
+<head>
+	<title>Edit User</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+	<!-- Users edit.html inserted into main.html -->
+		<h1>Update your profile</h1>
+		<div class="row">
+		    <div class="col-md-6 col-md-offset-3">
+		    	 			<form th:action="@{/user/edit}" th:object="${userEditForm}" id="userEditForm" method="post" role="form" name="form1">
+					<input type="hidden" th:field="*{userId}" />
+					<div>
+						<div class="form-group" th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+							<label for="name">Name :</label>
+							<input id="name" type="text" class="form-control" th:field="*{name}" /><br/>
+							<span th:if="*{#fields.hasErrors('name')}" th:errors="*{name}" class="help-block">error!</span>
+						</div>
+						
+						<div class="form-group" th:classappend="${#fields.hasErrors('email')}? 'has-error'">
+							<label for="email">E-mail :</label>
+							<input id="email" type="text" class="form-control" th:field="*{email}" readonly="readonly" /><br/>
+							<span th:if="*{#fields.hasErrors('email')}" th:errors="*{email}" class="help-block">error!</span>
+						</div>
+						
+		    	 			<div class="form-group" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
+							<label for="password">Password :</label>
+							<input id="password" type="password" class="form-control" th:field="*{password}" /><br/>
+							<span th:if="*{#fields.hasErrors('password')}" th:errors="*{password}" class="help-block">error!</span>
+						</div>
+					</div>
+					<div class="text-center">
+						<input class="btn btn-primary btn-large" type="submit" name="submit" value="Update my account" /><br/><br/>
+					</div>
+				</form>
+		    
+			<h2 th:text="${user.name}">user name (replaced with image)</h2>
+		    </div>
+		</div>		
+	<!-- Users edit.html inserted into main.html End -->
+	</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<body>
+	<nav th:fragment="nav">
+		<nav class="navbar navbar-default">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar-collapse">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" th:href="@{/project}">INDIVILISTER</a>
+				</div>
+				<div class="collapse navbar-collapse" id="navbar-collapse">
+					<ul class="nav navbar-nav">
+						<li class="dropdown"><a th:href="@{project/create#}"
+							class="dropdown-toggle" data-toggle="dropdown" role="button"
+							aria-expanded="false">Project <span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/project}">List project</a></li>
+								<li><a th:href="'/project/create' + '?form'">Create a
+										new project</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</nav>
+</body>
+</html>

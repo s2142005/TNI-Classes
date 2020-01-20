@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>INDIVILISTER : Projects</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"
+	charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/custom.css"
+	charset="utf-8">
+</head>
+<body>
+	<main> <!-- START Navigation bar -->
+	<nav th:include="common/nav :: nav"></nav>
+
+	<!-- END Navigation bar --> <!-- START Header -->
+	<div class="header-custom">
+		<div class="container">
+			<h2>Projects</h2>
+			<p>Simple todo app by Spring boot and Bootstrap</p>
+		</div>
+	</div>
+	<!-- END Header --> <!-- START Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<a th:href="@{/project/create?form}" class="btn btn-success">Let's
+					create a new project</a>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="col-lg-4" style="padding: 0;"
+					th:each="project, stat : ${projectList}">
+					<div class="materialCard success">
+						<header>
+							<a th:href="'/task/list/' + ${project.id}"
+								class="btn btn-success"> <span th:text="${project.name}">project0001</span>
+								 <span class="badge" th:text="${projectRemainingTaskMap.get(project.id)} + '/' + ${project.taskList.size()}">1/2</span> 
+							</a>
+						</header>
+						<a th:href="'/project/edit/' + ${project.id}">Edit</a> <a
+							th:href="'/project/delete/' + ${project.id}"
+							onclick="return confirm('Delete this project?');">Delete</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Content -->
+	<div class="push"></div>
+	</main>
+
+	<!-- START Footer -->
+	<span th:include="common/footer :: footer"></span>
+	<!-- START Footer -->
+
+	<script type="text/javascript" language="javascript" charset="_charset"
+		src="/js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" language="javascript" charset="_charset"
+		src="/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+

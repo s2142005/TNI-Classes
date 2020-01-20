@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>INDIVILISTER : Let's create a new project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css"
+	charset="utf-8">
+<link rel="stylesheet" type="text/css" href="/css/custom.css"
+	charset="utf-8">
+</head>
+<body>
+	<main> <!-- START Navigation bar -->
+	<nav th:include="common/nav :: nav"></nav>
+	<!-- END Navigation bar --> <!-- START Header -->
+	<div class="header-custom">
+		<div class="container">
+			<h2>Let's create a new project</h2>
+			<p>Create a new project for your own task</p>
+		</div>
+	</div>
+	<!-- END Header --> <!-- START Content -->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="box effect1">
+					<h4>Let's create a new project</h4>
+					<form th:action="@{/project/create}" th:object="${projectForm}"
+						method="POST" accept-charset="utf-8"
+						enctype="application/x-www-form-urlencoded"
+						class="form-horizontal">
+						<input type="hidden" name="authenticityToken"
+							value="e739540dfb2b4389d499e26e8b6dc17f665de703">
+						<div class="form-group"
+							th:classappend="${#fields.hasErrors('name')}? 'has-error'">
+							<label for="name" class="col-lg-2 control-label">Project
+								name:</label>
+							<div class="col-lg-10">
+								<input class="form-control" th:field="*{name}" id="name"
+									type="text" name="name" required=""> <span
+									th:if="${#fields.hasErrors('name')}" th:errors="*{name}"
+									class="help-block">error!</span>
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-lg-offset-2 col-lg-10">
+								<button type="submit" class="btn btn-success">Create</button>
+								<button type="reset" class="btn btn-danger">Reset</button>
+								<a th:href="@{/project}" class="btn btn-primary">Back to
+									Home</a>
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END Content -->
+	<div class="push"></div>
+	</main>
+
+	<!-- START Footer -->
+	<span th:include="common/footer :: footer"></span>
+	<!-- START Footer -->
+
+	<script type="text/javascript" language="javascript" charset="_charset"
+		src="/js/jquery-1.12.2.min.js"></script>
+	<script type="text/javascript" language="javascript" charset="_charset"
+		src="/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+

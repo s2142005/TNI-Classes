@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>User Info</title>
+</head>
+<body>
+	<div th:fragment="user_info" th:remove="tag">
+		<!-- shared _user_info.html included into home.html -->
+		<h1 th:text="${userInfo.username}">AAA</h1>
+		<span>
+			<a th:href="@{/user/show/} + ${userId}">view my profile</a>
+		</span>
+		<span th:text="${microposts.size()} + ' microposts'">
+			AAA
+		</span>
+		<!-- shared _user_info.html included into home.html End -->
+    </div>
+</body>
+</html>
+

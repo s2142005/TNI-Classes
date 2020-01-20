@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title >follow</title>
+</head>
+<body>
+	<div th:fragment="follow" th:remove="tag">
+		<!-- Users _follow.html included into _follow_form.html -->
+		<form th:action="@{/user/follow}" th:object="${userFollowForm}" method="post" role="form" name="form1">
+			<input type="hidden" class="form-control" th:field="*{userId}" /><br>
+			<input type="hidden" class="form-control" th:field="*{followerId}" /><br>
+			<input class="btn btn-primary btn-large" type="submit" name="submit" value="Follow" />
+		</form>
+		<br>
+		<br>
+		<!-- Users _follow.html included into _follow_form.html End -->
+    </div>
+</body>
+</html>
+

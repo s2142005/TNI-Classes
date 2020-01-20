@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title >follow_form</title>
+</head>
+<body>
+	<div th:fragment="follow_form" th:remove="tag">
+		<!-- Users _follow_form.html included into show.html -->
+		<div th:unless="${loginUser.id == user.id}" id="follow_form">
+			<span th:if="${isFollow}">
+				<div th:include="user/_unfollow :: unfollow">unfollow</div>
+			</span>
+			<span th:unless="${isFollow}">
+				<div th:include="user/_follow :: follow">follow</div>
+			</span>
+		</div>
+		<!-- Users _follow_form.html included into show.html End -->
+    </div>
+</body>
+</html>
+

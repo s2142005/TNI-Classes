@@ -1,0 +1,200 @@
+/* PAGE LAYOUT && BOOTSTRAP OVERRIDE */
+html, body {
+    height: 100%;
+}
+
+body {
+    background-color: #f4fff3;
+}
+
+a {
+    color: #5E8728;
+}
+
+a:hover, a:focus {
+    color: #6d9c2d;
+}
+
+main {
+    min-height: 100%;
+    padding-bottom: 20px;
+    margin-bottom: -50px;
+}
+
+footer, .push {
+    height: 50px;
+}
+
+footer {
+
+    line-height: 50px;
+    text-align: center;
+}
+
+textarea {
+    max-width: 100%;
+    height: 240px !important;
+}
+
+.navbar {
+    margin-bottom: 0;
+}
+
+.tasks-list input{
+    float: left !important;
+}
+
+.header-custom {
+    position: relative;
+    color: #cdbfe3;
+    text-align: center;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .1);
+    background-color: #92D13D;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#92D13D), to(#49691F));
+    background-image: -webkit-linear-gradient(top, #92D13D 0, #49691F 100%);
+    background-image: -o-linear-gradient(top, #92D13D 0, #49691F 100%);
+    background-image: linear-gradient(to bottom, #92D13D 0, #49691F 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#92D13D', endColorstr='#49691F', GradientType=0);
+    background-repeat: repeat-x;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    margin-bottom: -30px;
+    font-size: 24px;
+    text-align: left;
+    z-index: 0;
+}
+
+.header-custom h2 {
+    margin-top: 0px;
+    color: #fff
+}
+
+.header-custom p {
+    margin-bottom: 0;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #ececec;
+}
+
+/* CARD */
+
+.materialCard {
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    color: #000000;
+    border-top: 5px solid #FFFFFF;
+    border-radius: 3px;
+    padding: 15px;
+    box-shadow: 5px 3px 3px 0 rgba(0, 0, 0, 0.26);
+    /*height: 280px;*/
+    margin: 5px;
+    position: relative;
+}
+
+.materialCard .cont {
+    overflow-y: auto;
+}
+
+.materialCard header {
+    font-size: 1.1em;
+    padding-bottom: 15px;
+    text-transform: uppercase;
+    overflow-y: auto;
+}
+
+.materialCard header h1, .materialCard header h2, .materialCard header h3, .materialCard header h4, .materialCard header h5, .materialCard header h6 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.materialCard header h1 {
+    font-size: 1em;
+}
+
+.materialCard header h2 {
+    font-size: 0.9em;
+}
+
+.materialCard header h3 {
+    font-size: 0.8em;
+}
+
+.materialCard header h4 {
+    font-size: 0.7em;
+}
+
+.materialCard header h5 {
+    font-size: 0.6em;
+}
+
+.materialCard header h6 {
+    font-size: 0.5em;
+}
+
+.materialCard.alert {
+    border-top: 5px solid #E9453A;
+}
+
+.materialCard.success {
+    border-top: 5px solid #8CC04D;
+}
+
+.materialCard.warning {
+    border-top: 5px solid #F49719;
+}
+
+.materialCard.note {
+    border-top: 5px solid #428DCC;
+}
+
+.materialCard.image {
+    border: none;
+}
+.materialCard .action {
+    position: absolute;
+    bottom: 10px
+}
+
+/* BOX */
+
+.box {
+    padding: 30px;
+    width: 100%;
+    background: #FFF;
+    margin: 0px auto 15px;
+}
+
+.effect1 {
+    position: relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;
+}
+
+.effect1:before, .effect1:after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    -webkit-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    -moz-box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    top: 10px;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    -moz-border-radius: 100px / 10px;
+    border-radius: 100px / 10px;
+}
+
+.effect1:after {
+    right: 10px;
+    left: auto;
+    -webkit-transform: skew(8deg) rotate(3deg);
+    -moz-transform: skew(8deg) rotate(3deg);
+    -ms-transform: skew(8deg) rotate(3deg);
+    -o-transform: skew(8deg) rotate(3deg);
+    transform: skew(8deg) rotate(3deg);
+}

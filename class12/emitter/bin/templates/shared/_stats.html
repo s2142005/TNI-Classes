@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title >stats</title>
+</head>
+<body>
+	<div th:fragment="stats" th:remove="tag">
+		<!-- shared _stats.html included into home.html or show_follow.html or show.html -->
+		
+		<div class="stats">
+		    <a th:href="@{/user/following/} + ${userId}">
+		        <strong id="following" class="stat" th:text="${following.size()}">BBB</strong>following
+		    </a>
+		    <a th:href="@{/user/followers/} + ${userId}">
+		        <strong id="follower" class="stat" th:text="${follower.size()}">BBB</strong>followers
+		    </a>
+		    
+		    
+		</div>
+		<!-- shared _stats.html included into home.html or show_follow.html or show.html End -->
+    </div>
+</body>
+</html>
+

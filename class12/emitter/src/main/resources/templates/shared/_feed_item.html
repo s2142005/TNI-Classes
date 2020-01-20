@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>feed_item</title>
+</head>
+<body>
+	<div th:fragment="feed_item(micropost)" th:remove="tag">
+		<!-- shared _feed_item.html included into _feed.html -->
+		<li th:id="${micropost.id}">
+		    <span class="user">
+		        <a th:href="@{/user/show/} + ${micropost.user.id}" th:text="${micropost.user.name}">AAA</a>
+		    </span>
+		    <span class="content" th:text="${micropost.content}">BBB</span>
+		    <span class="timestamp" th:text="'Posted ' + ${#dates.format(micropost.created, 'yyyy/MM/dd HH:mm:ss')}">
+		    	CCC
+		    </span>
+			<span th:if="${userId == micropost.userId}">
+				<a th:href="@{/micropost/delete/} + ${micropost.id}" onclick="return confirm('Are you sure?')">delete</a>
+			</span>
+		</li>
+		<!-- shared _feed_item.html included into _feed.html End -->
+    </div>
+</body>
+</html>

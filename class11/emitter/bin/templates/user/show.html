@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/main">
+<head>
+	<title>Users Details</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+		<!-- Users show.html inserted into main.html -->
+		<div class="row">
+		    <aside class="col-xs-4">
+		        <section>
+		            <h1>
+		                <span th:text="${user.name}">AAA</span>
+		            </h1>
+		        </section>
+		        
+		    </aside>
+		    <div class="col-xs-8">
+
+				<span th:if="${microposts.size() > 0}">
+					<ol>
+						<h3 th:text="'Microposts (' + ${microposts.size()} + ')'">CCC</h3>
+					</ol>
+		            <ol class="microposts" th:include="shared/_micropost :: micropost">micropost</ol>
+				</span>
+		    </div>
+		    
+		</div>
+		<a class="btn btn-primary btn-small" href="/">
+		    Back to Home
+		</a>
+		<!-- Users show.html inserted into main.html End -->
+	</div>
+</body>
+</html>
+		        

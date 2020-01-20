@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="layout/main">
+<head>
+	<title>Users' list</title>
+</head>
+<body>
+	<div layout:fragment="content" th:remove="tag">
+	<!-- Users list.html inserted into main.html -->
+		<h1>All users</h1>
+
+		<span th:each="user, stat : ${users}">
+			<ul class="users">
+				<li>
+					<img th:src="${user.avatar}" width="52" height="52"  th:alt="${user.name}" class="gravatar"/>
+					<a th:href="@{/user/show/} + ${user.id}" th:text="${user.name}">AAA</a>
+					<span>|</span>
+
+					<a th:href="@{/user/edit/} + ${user.id}" th:text="'Edit'">BBB</a>
+					<span>|</span>
+					<a th:if="${userId != user.id}" th:href="@{/user/delete/} + ${user.id}" onclick="return confirm('Are you sure?')"><span class="glyphicon glyphicon-remove red" aria-hidden="true"></span></a>
+				</li>
+			</ul>
+		</span>
+				<!-- Start Of Pagination -->
+		<div th:fragment='paginationbar'>
+			<div>
+				<ul class='pagination pagination-centered'>
+					<li th:class="${page.firstPage}?'disabled':''">
+						<span th:if='${page.firstPage}'>← First</span>
+						<a th:if='${not page.firstPage}' th:href='@{${page.url}(page=0,size=${page.size})}'>← First</a>
+					</li>
+					<li th:class="${page.hasPreviousPage}? '' : 'disabled'">
+						<span th:if='${not page.hasPreviousPage}'>«</span>
+						<a th:if='${page.hasPreviousPage}' th:href='@{${page.url}(page=${page.number-2},size=${page.size})}' title='Go to previous page'>«</a>
+					</li>
+					<li th:each='item : ${page.items}' th:class="${item.current}? 'active' : ''">
+						<span th:if='${item.current}' th:text='${item.number}'>1</span>
+						<a th:if='${not item.current}' th:href='@{${page.url}(page=${item.number-1},size=${page.size})}'><span th:text='${item.number}'>1</span></a>
+					</li>
+					
+							<li th:class="${page.hasNextPage}? '' : 'disabled'">
+						<span th:if='${not page.hasNextPage}'>»</span>
+						<a th:if='${page.hasNextPage}' th:href='@{${page.url}(page=${page.number},size=${page.size})}' title='Go to next page'>»</a>
+					</li>
+					<li th:class="${page.lastPage}? 'disabled' : ''">
+						<span th:if='${page.lastPage}'>Last →</span>
+						<a th:if='${not page.lastPage}' th:href='@{${page.url}(page=${page.totalPages - 1},size=${page.size})}'>Last →</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- End Of Pagination -->
+		
+
+	<!-- Users list.html inserted into main.html End -->
+	</div>
+</body>
+</html>
+					
