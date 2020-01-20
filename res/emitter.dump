@@ -1,0 +1,111 @@
+-- phpMyAdmin SQL Dump
+-- version 4.6.3
+-- https://www.phpmyadmin.net/
+--
+-- Host: localhost
+-- Generation Time: 2016 年 9 月 28 日 05:50
+-- サーバのバージョン： 5.6.31
+-- PHP Version: 5.5.36
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `emitter2`
+--
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `micropost`
+--
+
+DROP TABLE IF EXISTS `micropost`;
+CREATE TABLE `micropost` (
+  `id` int(11) NOT NULL,
+  `content` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `relation_ship`
+--
+
+DROP TABLE IF EXISTS `relation_ship`;
+CREATE TABLE `relation_ship` (
+  `id` int(11) NOT NULL,
+  `follower_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- テーブルの構造 `user`
+--
+
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `updated` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `micropost`
+--
+ALTER TABLE `micropost`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `FK2b2a9gdm83539jtsjj4kkjwb8` (`user_id`);
+
+--
+-- Indexes for table `relation_ship`
+--
+ALTER TABLE `relation_ship`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `micropost`
+--
+ALTER TABLE `micropost`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `relation_ship`
+--
+ALTER TABLE `relation_ship`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- ダンプしたテーブルの制約
+--
+
+--
+-- テーブルの制約 `micropost`
+--
+ALTER TABLE `micropost`
+  ADD CONSTRAINT `FK2b2a9gdm83539jtsjj4kkjwb8` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`);
